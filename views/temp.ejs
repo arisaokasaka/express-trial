@@ -5,7 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Express & EJS</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function() {
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/ajax',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#msg').html(data.msg)
+                    },
+                    error: function () {}
+                })
+            })
+        })
+    </script>
 </head>
+
 <body>
     アクセス回数(Cookie)：<%= cookieCount %>回
     アクセス回数(Session)：<%= sessionCount %>回
@@ -18,5 +35,12 @@
         <input type="text" name="name" value="test" />
         <input type="text" name="age" value="11" />
     </form>
+
+    <form style="margin-top: 48px;">
+        <p>ajax transmission</p>
+        <div id="msg"></div>
+        <button id="btn" type="button">Send</button>
+    </form>
 </body>
+
 </html>

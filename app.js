@@ -54,6 +54,15 @@ app.post('/', (req, res) => {
   })
 })
 
+let msg = ''
+app.post('/ajax', function (_req, res) {
+  msg += 'wow!'
+  // jsonの中身に返したい内容を追加する
+  res.json({
+    msg: msg
+  })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
